@@ -1,25 +1,31 @@
 import {Component} from '@angular/core';
-
+import { UserService } from './services/user.service';
+//import {LocalStorageService, LocalStorageSubscriber} from 'angular2-localstorage/LocalStorageEmitter';
 @Component({
     selector: 'my-app',
-    templateUrl: './app/app.component.html'
+    templateUrl: '/dist/app/app.component.html',
+    providers: [UserService]
 })
 
 export class AppComponent {
-    constructor() {
-        console.log('on');
-        //this.auth = true;
+    private isAuth: Boolean;
+    constructor(private user: UserService) {
+        this.isAuth = false;
+        //if (this.isAuth) {
+        //    this.user = this.auth.getUser();
+        //}
         //this.username = '';
         //this.password = '';
     }
     login() {
-        console.log('login');
         //event.preventDefault();
-        //this.auth.login(username, password).then(() => {
-        //    this.router.parent.navigate('/home');
-        //})
-        //.catch((error) => {
-        //    alert(error);
-        //});
+        this.user.login('lok', 'ok').subscribe((result) => {
+            console.log(result);
+            this.isAuth =  result;
+        });
+    }
+
+    logout() {
+        this.isAuth =  false;
     }
 }

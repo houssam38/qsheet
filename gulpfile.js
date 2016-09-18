@@ -23,14 +23,12 @@ gulp.task('clean:dist', function(cb) {
     rimraf(paths.dist, cb);
 });
 
-gulp.task('server', plugins.shell.task('tsc && concurrently \"npm run tsc:w\" \"npm run lite\" '));
-
-gulp.task('default', function(done) {
-    runSequence('clean:dist', 'copy:src', 'server', done);
+gulp.task('compile', plugins.shell.task('tsc'));
+gulp.task('server', plugins.shell.task('tsc && concurrently \"npm run tsc:w\" \"node server.js\"'));
+gulp.task('watch', function () {
+    gulp.watch('src/**/*.*', ['copy:src', 'compile']);
 });
 
-gulp.task('watch', function () {
-    // Endless stream mode
-    return watch('src/**/*.*', { ignoreInitial: false })
-        .pipe(gulp.dest(paths.dist));
+gulp.task('serve+watch', function(done) {
+    runSequence('clean:dist', 'copy:src', 'server', 'watch', done);
 });

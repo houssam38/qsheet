@@ -17,15 +17,15 @@
                         <li><a routerLink="/">Home</a></li>
                         <li><a routerLink="/about" routerLinkActive="active">About</a></li>
                     </ul>
-                    <div *ngIf="!isAuth" class="navbar-form navbar-left">
+                    <div *ngIf="!isAuth" class="navbar-form navbar-right">
                         <div class="form-group">
                             <input type="text" #username class="form-control" id="username" placeholder="Username">
                             <input type="password" #password class="form-control" id="password" placeholder="Password">
                         </div>
                         <button type="submit" class="btn btn-default" (click)="login($event)">Login</button>
                     </div>
-                    <div *ngIf="isAuth">
-                        <a href="#" (click)="logout($event)">Logout</a>
+                    <div *ngIf="isAuth" class="navbar-form navbar-right">
+                        <button href="#" (click)="logout($event)">Logout</button>
                     </div>
                 </div>
             </div>

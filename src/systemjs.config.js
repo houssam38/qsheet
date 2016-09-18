@@ -1,10 +1,12 @@
 (function(global) {
     var paths = {
-        'npm:': 'node_modules/'
+        'npm:': 'node_modules/',
+        'rxjs/operator/*': '/node_modules/rxjs/add/operator/*.js',
+        'rxjs/*': '/node_modules/rxjs/*.js',
     };
 
     var map = {
-        'app': 'app',
+        'app': 'dist/app',
         '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
         '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
         '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
