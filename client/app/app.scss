@@ -21,6 +21,7 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 /* inject:scss */
 @import 'admin/admin';
 @import 'main/main';
+@import 'sheet/sheet';
 @import '../components/footer/footer';
 @import '../components/oauth-buttons/oauth-buttons';
 /* endinject */

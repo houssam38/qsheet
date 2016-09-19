@@ -1,6 +1,6 @@
 'use strict';
 // @flow
-class _User {
+class User {
   _id: string = '';
   name: string = '';
   email: string = '';
@@ -11,7 +11,7 @@ class _User {
 export function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
   'ngInject';
   var safeCb = Util.safeCb;
-  var currentUser: _User = new _User();
+  var currentUser: User = new User();
   var userRoles = appConfig.userRoles || [];
   /**
    * Check if userRole is >= role

@@ -19,6 +19,7 @@ import account from './account';
 import admin from './admin';
 import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
+import sheet from './sheet';
 import main from './main/main.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
@@ -37,7 +38,7 @@ angular.module('App', [
 
   _Auth,
   account,
-  admin,  navbar,
+  admin, sheet, navbar,
   footer,
   main,
   constants,
