@@ -1,12 +1,14 @@
 'use strict';
 const angular = require('angular');
 import routes from './sheet.routes';
-import SheetController from './sheet.controller';
+import SheetListController from './list/list.controller';
+import SheetDetailController from './detail/detail.controller';
 
 export default angular.module('App.sheet', [
-        'App.auth',
+        'App.sheet-manager',
         'ui.router'
     ])
     .config(routes)
-    .controller('SheetController', SheetController)
+    .controller('SheetListController', SheetListController)
+    .controller('SheetDetailController', SheetDetailController)
     .name;
