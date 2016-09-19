@@ -8,12 +8,17 @@ var SheetSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: 'User'
   },
+  type : {
+    type : String,
+    default : 'Checkbox'
+  },
   questions: [{
     name: String,
+    order : Number,
+
     answers: [{
       value: String,
-      right: Boolean,
-      order : Number
+      right: Boolean
     }]
   }],
 
