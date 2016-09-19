@@ -11,6 +11,7 @@ export default function(app) {
   // For API
   app.use('/api/sheets', require('./api/sheet'));
   app.use('/api/users', require('./api/user'));
+  app.use('/api/answerSheet', require('./api/answerSheet'));
 
   // For Auth
   app.use('/auth', require('./auth').default);
