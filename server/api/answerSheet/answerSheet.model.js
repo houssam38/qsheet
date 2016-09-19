@@ -20,7 +20,10 @@ var AnswerSheetSchema = new mongoose.Schema({
         {vale:objectId}
       ]
   }],
-  score : Number
+  score :  {
+    type : Number,
+    default : null
+  }
 });
 
 export default mongoose.model('AnswerSheet', AnswerSheetSchema);
