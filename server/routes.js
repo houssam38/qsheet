@@ -8,11 +8,11 @@ import errors from './components/errors';
 import path from 'path';
 
 export default function(app) {
-  // Insert routes below
+  // For API
   app.use('/api/sheets', require('./api/sheet'));
-  app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
 
+  // For Auth
   app.use('/auth', require('./auth').default);
 
   // All undefined asset or api routes should return a 404
