@@ -12,7 +12,8 @@ var SheetSchema = new mongoose.Schema({
     name: String,
     answers: [{
       value: String,
-      right: Boolean
+      right: Boolean,
+      order : Number
     }]
   }],
   dateCreate: {type: Date, default: Date.now},
