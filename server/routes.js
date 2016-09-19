@@ -10,8 +10,6 @@ import path from 'path';
 export default function(app) {
   // Insert routes below
   app.use('/api/sheets', require('./api/sheet'));
-  app.use('/api/qsheets', require('./api/qsheet'));
-  app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
 
   app.use('/auth', require('./auth').default);
