@@ -4,8 +4,21 @@ import mongoose from 'mongoose';
 
 var QsheetSchema = new mongoose.Schema({
   name: String,
-  info: String,
-  active: Boolean
+  creator: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User'
+  },
+  questions: [{
+    name: String,
+    answers: [{
+      value: String,
+      right: Boolean
+    }]
+  }],
+  dateCreate: {type: Date, default: Date.now},
+  dateUpdate: {type: Date, default: null},
+  active: Boolean,
+  private: Boolean
 });
 
 export default mongoose.model('Qsheet', QsheetSchema);
