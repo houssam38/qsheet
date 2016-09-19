@@ -16,10 +16,18 @@ var SheetSchema = new mongoose.Schema({
       order : Number
     }]
   }],
+
+  // Enable for user email
+  forUser : [
+    {email:String}
+  ],
   dateCreate: {type: Date, default: Date.now},
   dateUpdate: {type: Date, default: null},
   active: Boolean,
-  private: Boolean
+  private: Boolean,
+
+  // Lock the sheet
+  lock : Boolean,
 });
 
 export default mongoose.model('Sheet', SheetSchema);
