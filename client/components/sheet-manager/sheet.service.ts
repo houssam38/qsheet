@@ -14,10 +14,6 @@ export function SheetResource($resource) {
         getUserSheets: {
             method: 'GET',
             isArray: true,
-            params: {
-                id: ':id',
-                controller: ':usersheets'
-            }
         },
         update: {
             method: 'PUT',
