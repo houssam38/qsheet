@@ -7,7 +7,6 @@ export default class AdminController {
 
     /*@ngInject*/
     constructor(User) {
-        console.log('oo');
 
     }
 }

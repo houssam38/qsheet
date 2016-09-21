@@ -17,14 +17,21 @@ export function SheetManagerService($location, $http, $cookies, $q, appConfig, U
          * @return {Promise}
          */
         createSheet(sheet, callback?: Function) {
-            console.log('createsheet');
             return Sheet.save(sheet,
                 function(data) {
-                    return 'oookkkkk';
+
                 },
                 function(err) {
                     return err;
                 }).$promise;
+        },
+
+        updateSheet(sheet, callback?: Function) {
+            return Sheet.update( { id: sheet._id }, sheet, function(res) {
+
+            }, function(err) {
+
+            }).$promise;
         }
     };
 

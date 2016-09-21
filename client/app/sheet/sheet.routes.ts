@@ -14,5 +14,11 @@ export default function routes($stateProvider) {
           template: require('./detail/detail.html'),
           controller: 'SheetDetailController',
           controllerAs: 'sheetDetail'
+      })
+      .state('sheet/edit', {
+          url: '/sheet/:sheetId',
+          template: require('./detail/detail.html'),
+          controller: 'SheetDetailController',
+          controllerAs: 'sheetDetail'
       });
 }
