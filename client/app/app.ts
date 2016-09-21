@@ -5,6 +5,8 @@ const ngCookies = require('angular-cookies');
 const ngResource = require('angular-resource');
 const ngSanitize = require('angular-sanitize');
 const uiRouter = require('angular-ui-router');
+const angularMaterialize = require('angular-materialize');
+
 // const ngMessages = require('angular-messages');
 // import ngValidationMatch from 'angular-validation-match';
 import {routeConfig} from './app.config';
@@ -20,7 +22,7 @@ import constants from './app.constants';
 import util from '../components/util/util.module';
 import './app.scss';
 
-angular.module('App', [ngCookies, ngResource, ngSanitize, uiRouter, _Auth, _SheetManager, account, admin, sheet, navbar, footer, main, constants, util
+angular.module('App', [ngCookies, ngResource, ngSanitize, uiRouter, _Auth, _SheetManager, account, admin, sheet, navbar, footer, main, constants, util,angularMaterialize
 ]).config(routeConfig)
   .run(function($rootScope, $location, Auth) {
     'ngInject';

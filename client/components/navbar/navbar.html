@@ -1,5 +1,5 @@
 <nav class="light-blue lighten-1" role="navigation">
-  <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">QSheet</a>
+  <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">QSheet</a>
     <ul class="right hide-on-med-and-down">
       <li ng-repeat="item in $ctrl.menu" ui-sref-active="active">
         <a ui-sref="{{item.state}}">{{item.title}}</a>
@@ -14,8 +14,19 @@
     </ul>
 
     <ul id="nav-mobile" class="side-nav">
-      <li><a href="#">Navbar Link</a></li>
+      <li ng-repeat="item in $ctrl.menu" ui-sref-active="active">
+        <a ui-sref="{{item.state}}">{{item.title}}</a>
+      </li>
+      <li ng-show="$ctrl.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
+      <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
+      <li ng-hide="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
+      <li ng-show="$ctrl.isLoggedIn()" ui-sref-active="active"><a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+      <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="sheet">My Sheet</a></li>
+      <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="settings">Configuration</a></li>
+      <li ng-show="$ctrl.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
     </ul>
-    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    <a href="#" class="button-collapse" data-activates="nav-mobile" data-sidenav="left" data-menuwidth="300" data-closeonclick="true">
+      <i class="material-icons">menu</i>
+    </a>
   </div>
 </nav>

@@ -2,6 +2,8 @@
 /* eslint no-sync: 0 */
 const angular = require('angular');
 
+
+
 export class NavbarComponent {
   menu = [{
     'title': 'Home',
@@ -17,6 +19,10 @@ export class NavbarComponent {
     this.isLoggedIn = Auth.isLoggedInSync;
     this.isAdmin = Auth.isAdminSync;
     this.getCurrentUser = Auth.getCurrentUserSync;
+  }
+
+  test() {
+    console.log('clicker');
   }
 
 }
