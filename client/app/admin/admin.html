@@ -1,12 +1,44 @@
 <div class="container">
-  <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
-  <ul class="list-group user-list">
-    <li class="list-group-item" ng-repeat="user in admin.users">
-	    <div class="user-info">
-	        <strong>{{user.name}}</strong><br>
-	        <span class="text-muted">{{user.email}}</span>
-	    </div>
-        <a ng-click="admin.delete(user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
-    </li>
-  </ul>
+  <div class="section">
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card ">
+          <div class="card-content ">
+            <span class="card-title">Statistics</span>
+            <div class="collection">
+              <a href="#" class="collection-item">Admin users<span class="badge">{{ (admin.users|filter:{role:'admin'}).length  }}</span></a>
+              <a href="#" class="collection-item">Users<span class="badge">{{ (admin.users|filter:{role:'user'}).length  }}</span></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">List Users</span>
+
+            <div class="collection">
+              <div class="collection-item row" ng-repeat="user in admin.users">
+                <div class="userInfo col s10">
+                  <strong class="orange-text">{{user.name}}</strong><br>
+                  <span>{{user.email}}</span>
+                </div>
+
+                <div class="test col s2">
+                  <a class="btn-floating right red" ng-click="admin.delete(user)">
+                    <i class=" material-icons">delete</i>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
 </div>
