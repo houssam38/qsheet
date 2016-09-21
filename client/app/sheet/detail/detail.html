@@ -7,8 +7,8 @@
                     <div class="input-field">
                         <i class="material-icons prefix">question_answer</i>
                         <input type="text" ng-model="question.name">
-                        <ul ng-repeat="answer in question.answers">
-                            <li class="answer">
+                        <div ng-repeat="answer in question.answers" dragula="'bag-{{question.id}}'" class="container ng-isolate-scope">
+                            <div class="answer">
                                 <div class="input-field left">
                                     <input type="checkbox" id="{{answer.value}}" ng-model="answer.right">
                                     <label for="{{answer.value}}"></label>
@@ -16,12 +16,18 @@
                                 <div class="input-field left">
                                     <input type="text" ng-model="answer.value">
                                 </div>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
                         <a class="btn-add-answer btn-floating waves-effect waves-light btn right" ng-click="sheetDetail.addAnswer(question.answers)"><i class="material-icons left">add</i></a>
                     </div>
                 </li>
                 <div class="clear"></div>
+                <div class="container ng-isolate-scope hidden" dragula="'bag-{{question.id}}'">
+                    <!--<div>As soon as you start dragging an element, a <code>drag</code> event is fired</div>-->
+                    <!--<div>Whenever an element is cloned because <code>copy: true</code>, a <code>cloned</code> event fires</div>-->
+                    <!--<div>The <code>shadow</code> event fires whenever the placeholder showing where an element would be dropped is moved to a different container or position</div>-->
+                    <!--<div>A <code>drop</code> event is fired whenever an element is dropped anywhere other than its origin <em>(where it was initially dragged from)</em></div>-->
+                </div>
             </ul>
         </div>
         <button class="waves-effect waves-light btn right" ng-click="sheetDetail.save()"><i class="material-icons left">done</i>Submit</button>
