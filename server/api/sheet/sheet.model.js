@@ -16,7 +16,6 @@ var SheetSchema = new mongoose.Schema({
   questions: [{
     name: String,
     order : Number,
-
     answers: [{
       value: String,
       right: Boolean

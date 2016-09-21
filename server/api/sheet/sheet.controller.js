@@ -78,6 +78,14 @@ export function show(req, res) {
     .catch(handleError(res));
 }
 
+// Gets a single Sheet from the DB
+export function showUserSheets(req, res) {
+  return Sheet.find().exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 // Creates a new Sheet in the DB
 export function create(req, res) {
   return Sheet.create(req.body)

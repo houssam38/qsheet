@@ -4,26 +4,44 @@ interface Sheet {
   _id: string;
   name: string;
   creator: string;
+  questions: Object[];
 }
 
 export default class SheetDetailController {
   sheet: Sheet = {
     _id: null,
     name: '',
-    creator: ''
+    creator: '',
+    questions: []
   };
   SheetManager;
   $state;
 
     /*@ngInject*/
-  constructor(Sheet, SheetManager, $state, $stateParams) {
+  constructor(Sheet, SheetManager, $state, $stateParams, Auth) {
     var that = this;
     this.SheetManager = SheetManager;
     this.sheet = {
       _id : null,
       name: this.sheet.name,
-      creator: '57dfed0f9abde877125ff928'
+      creator: '',
+      questions: [{
+        name: 'Is it your first question ?',
+        order : 1,
+        answers: [{
+          name: 'yes',
+          right: true
+        },{
+          name: 'no',
+          right: false
+        }]
+      }]
     };
+
+    Auth.getCurrentUser().then( function(res) {
+      that.sheet.creator = res._id;
+    });
+
     this.$state = $state;
     if($stateParams.sheetId != undefined) {
       Sheet.get({ 'id': $stateParams.sheetId }, function(response) {

@@ -11,6 +11,14 @@ export function SheetResource($resource) {
                 id: ':id'
             }
         },
+        getUserSheets: {
+            method: 'GET',
+            isArray: true,
+            params: {
+                id: ':id',
+                controller: ':usersheets'
+            }
+        },
         update: {
             method: 'PUT',
             params: {

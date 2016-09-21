@@ -6,6 +6,7 @@ var controller = require('./sheet.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/:id/usersheets', controller.showUserSheets);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
 router.put('/:id', controller.upsert);

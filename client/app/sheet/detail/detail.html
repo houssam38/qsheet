@@ -1,7 +1,29 @@
 <form>
     <div class="form-group">
         <label for="name">Sheet name</label>
-        <input type="text" clmeass="form-control" id="name" placeholder="Enter name" ng-model="sheetDetail.sheet.name">
+        <input type="text" id="name" placeholder="Enter name" ng-model="sheetDetail.sheet.name">
+        <ul ng-repeat="question in sheetDetail.sheet.questions">
+            <li class="clear">
+                <div class="input-field">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input type="text" ng-model="question.name">
+                    <ul ng-repeat="answer in question.answers">
+                        <li>
+                            <div class="input-field left">
+                                <input type="checkbox" id="{{answer.value}}" ng-model="answer.right">
+                                <label for="{{answer.value}}"></label>
+                            </div>
+                            <div class="input-field left">
+                                <input type="text" ng-model="answer.value">
+                            </div>
+                        </li>
+                    </ul>
+                    <hr>
+                </div>
+            </li>
+            <div class="clear"></div>
+        </ul>
+        <!--<input type="text" clmeass="form-control" id="name" placeholder="Question ?" ng-model="sheetDetail.sheet.questions[0].name">-->
     </div>
-    <button type="submit" class="btn btn-primary" ng-click="sheetDetail.save()">Submit</button>
+    <button type="submit" class="btn" ng-click="sheetDetail.save()">Submit</button>
 </form>
