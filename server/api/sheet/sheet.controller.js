@@ -64,7 +64,7 @@ function handleError(res, statusCode) {
 }
 
 // Gets a list of Sheets
-export function index(req, res) {
+export function adminGetSheets(req, res) {
   return Sheet.find().exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -85,6 +85,17 @@ export function showUserSheets(req, res) {
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
+
+// Return own user sheet
+export function userSheet(req, res) {
+  var userId = req.user._id;
+  return Sheet.find({creator:userId}).exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+
 
 // Creates a new Sheet in the DB
 export function create(req, res) {

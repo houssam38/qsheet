@@ -8,10 +8,7 @@ export default class SheetListController {
     var that = this;
     Auth.getCurrentUser().then( function(res) {
         console.log(res._id);
-        Sheet.getUserSheets({
-            'id': '57e254f46e390406136f7dce', // res._id;
-            'controller': 'usersheets'
-        }).$promise.then( function (res) {
+        Sheet.getUserSheets().$promise.then( function (res) {
             console.log(res);
             that.sheets = res;
         });

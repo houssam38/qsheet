@@ -1,12 +1,15 @@
 'use strict';
 
+
+import * as auth from '../../auth/auth.service';
+
 var express = require('express');
 var controller = require('./sheet.controller');
 
 var router = express.Router();
 
-router.get('/', controller.index);
-router.get('/:id/usersheets', controller.showUserSheets);
+router.get('/admin', auth.hasRole('admin'), controller.adminGetSheets);
+router.get('/', auth.hasRole('user'), controller.userSheet);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
 router.put('/:id', controller.upsert);
