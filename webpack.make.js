@@ -49,7 +49,7 @@ module.exports = function makeWebpackConfig(options) {
 
                 'angular-sanitize',
 
-
+                'angular-materialize',
                 'angular-ui-router',
                 'lodash'
             ]
