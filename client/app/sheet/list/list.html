@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div class="section">
+  <div class="section" ng-if="sheetList.sheets.length > 0">
     <div class="row" >
 
       <div class="col s12 m6">
@@ -33,7 +33,22 @@
 
   </div>
 
-  <div class="fixed-action-btn">
+  <div class="section" ng-if="sheetList.sheets.length == 0">
+
+    <div class="row section no-pad-bot center" >
+      <div class="col s12">
+        <br>
+        <br>
+        <h1 class="header center orange-text">No sheet yet...</h1>
+      </div>
+      <div class="row center">
+        <a ui-sref="sheet/create" id="download-button" class="btn-large waves-effect waves-light orange">Create my First Sheet</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div ng-if="sheetList.sheets.length > 0" class="fixed-action-btn">
     <a ui-sref="sheet/create" class="btn-floating btn-large red">
       <i class="large material-icons">add</i>
     </a>
