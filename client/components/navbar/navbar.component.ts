@@ -6,10 +6,7 @@ export class NavbarComponent {
   menu = [{
     'title': 'Home',
     'state': 'main'
-  },{
-    'title': 'My sheets',
-    'state': 'sheet'
-  },];
+  }];
   isLoggedIn: Function;
   isAdmin: Function;
   getCurrentUser: Function;
