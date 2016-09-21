@@ -29,10 +29,10 @@ export default class SheetDetailController {
         name: 'Is it your first question ?',
         order : 1,
         answers: [{
-          name: 'yes',
+          value: 'yes',
           right: true
         },{
-          name: 'no',
+          value: 'no',
           right: false
         }]
       }]
@@ -53,22 +53,44 @@ export default class SheetDetailController {
   }
 
   save() {
+    console.log('save');
     if (this.sheet._id == null) {
       return this.SheetManager.createSheet(this.sheet)
           .then(() => {
-            this.$state.go('sheet');
+            //this.$state.go('sheet');
           })
           .catch(err => {
             err = err.data;
           });
     } else {
-        return this.SheetManager.updateSheet(this.sheet)
-            .then(() => {
-              this.$state.go('sheet');
-            })
-            .catch(err => {
-              err = err.data;
-            });
+      return this.SheetManager.updateSheet(this.sheet)
+          .then(() => {
+            //this.$state.go('sheet');
+          })
+          .catch(err => {
+            err = err.data;
+          });
     }
+  }
+
+  addQuestion() {
+    this.sheet.questions.push({
+      name: 'Want more ?',
+      order : this.sheet.questions.length + 1,
+      answers: [{
+        value: 'yes',
+        right: true
+      },{
+        value: 'no',
+        right: false
+      }]
+    })
+  }
+
+  addAnswer(answers) {
+    answers.push({
+      value: 'new answer',
+      right: false
+    });
   }
 }

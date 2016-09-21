@@ -1,7 +1,35 @@
 .addSheet {
 
 }
-
 .clear {
   clear: both;
+}
+form {
+  padding-top: 20px;
+
+  .sheet-name {
+    font-size: 30px;
+    border-bottom: 0 none;
+  }
+  .question-container {
+    margin: 0 0 10px 0;
+    padding: 10px 20px;
+  }
+  .question-container:nth-child(odd) {
+    background: #f3f3f3;
+  }
+
+  .answer {
+    overflow: hidden;
+    float: left;
+    margin-right: 20px;
+  }
+
+  .btn-add-question {
+    margin-right: 10px;
+  }
+
+  .btn-add-answer  {
+    margin-top: 15px;
+  }
 }
