@@ -9,6 +9,7 @@ var SheetSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: 'User'
   },
+  description : String,
   type : {
     type : String,
     default : 'Checkbox'
