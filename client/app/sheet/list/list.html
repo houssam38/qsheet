@@ -1,8 +1,42 @@
-<ul ng-repeat="sheet in sheetList.sheets">
-    <li>
-        {{sheet.name}}
-        <a ui-sref="sheet/edit({sheetId: sheet._id})" class="edit"><span class="fa fa-edit fa-2x"></span></a>
-        <a ng-click="sheetList.delete(sheet)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
-    </li>
-</ul>
-<button type="button" class="btn btn-primary" ui-sref="sheet/create"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add sheet</button>
+<div class="container">
+
+  <div class="section">
+    <div class="row" >
+
+      <div class="col s12 m6">
+        <div class="card" ng-repeat="sheet in sheetList.sheets" ng-if="$even">
+          <div class="card-content">
+            <span class="card-title">{{sheet.name}}</span>
+            <p>{{sheet.description}}</p>
+          </div>
+          <div class="card-action">
+            <a ui-sref="sheet/edit({sheetId: sheet._id})" class="edit">Edit</a>
+            <a ng-click="sheetList.delete(sheet)" class="trash">Delete</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6">
+        <div class="card" ng-repeat="sheet in sheetList.sheets" ng-if="$odd">
+          <div class="card-content">
+            <span class="card-title">{{sheet.name}}</span>
+            <p>{{sheet.description}}</p>
+          </div>
+          <div class="card-action">
+            <a ui-sref="sheet/edit({sheetId: sheet._id})" class="edit">Edit</a>
+            <a ng-click="sheetList.delete(sheet)" class="edit">Delete</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="fixed-action-btn">
+    <a ui-sref="sheet/create" class="btn-floating btn-large red">
+      <i class="large material-icons">add</i>
+    </a>
+  </div>
+
+</div>
