@@ -4,17 +4,12 @@ const angular = require('angular');
 const ngCookies = require('angular-cookies');
 const ngResource = require('angular-resource');
 const ngSanitize = require('angular-sanitize');
-
-
 const uiRouter = require('angular-ui-router');
-
 // const ngMessages = require('angular-messages');
 // import ngValidationMatch from 'angular-validation-match';
-
-
 import {routeConfig} from './app.config';
-
 import _Auth from '../components/auth/auth.module';
+import _SheetManager from '../components/sheet-manager/sheet-manager.module';
 import account from './account';
 import admin from './admin';
 import navbar from '../components/navbar/navbar.component';
@@ -23,29 +18,10 @@ import sheet from './sheet';
 import main from './main/main.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
-
-
-
 import './app.scss';
 
-angular.module('App', [
-  ngCookies,
-  ngResource,
-  ngSanitize,
-
-
-  uiRouter,
-
-  _Auth,
-  account,
-  admin, sheet, navbar,
-  footer,
-  main,
-  constants,
-
-  util
-])
-  .config(routeConfig)
+angular.module('App', [ngCookies, ngResource, ngSanitize, uiRouter, _Auth, _SheetManager, account, admin, sheet, navbar, footer, main, constants, util
+]).config(routeConfig)
   .run(function($rootScope, $location, Auth) {
     'ngInject';
     // Redirect to login if route requires auth and you're not logged in

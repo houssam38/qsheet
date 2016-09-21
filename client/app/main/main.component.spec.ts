@@ -21,7 +21,7 @@ describe('Component: MainComponent', function() {
     $rootScope,
     $state) {
       $httpBackend = _$httpBackend_;
-      $httpBackend.expectGET('/api/things')
+      $httpBackend.expectGET('/api/sheets')
         .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
 
       scope = $rootScope.$new();
@@ -32,9 +32,7 @@ describe('Component: MainComponent', function() {
       });
   }));
 
-  it('should attach a list of things to the controller', function() {
-    mainComponent.$onInit();
-    $httpBackend.flush();
-    expect(mainComponent.awesomeThings.length).toBe(4);
+  it('should test something', function() {
+
   });
 });

@@ -1,0 +1,8 @@
+<ul ng-repeat="sheet in sheetList.sheets">
+    <li>
+        {{sheet.name}}
+        <a ui-sref="sheet/edit({sheetId: sheet._id})" class="edit"><span class="fa fa-edit fa-2x"></span></a>
+        <a ng-click="sheetList.delete(sheet)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
+    </li>
+</ul>
+<button type="button" class="btn btn-primary" ui-sref="sheet/create"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add sheet</button>
