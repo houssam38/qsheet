@@ -70,7 +70,7 @@ export default class SheetDetailController {
       return this.SheetManager.updateSheet(this.sheet)
           .then(() => {
             that.ngDialog.open({
-              template: 'app/modal/notify-saved-sheet.html',
+              template: './app/modal/notify-saved-sheet.html',
               className: 'ngdialog-theme-default',
               controller: function() {
                 that.$timeout(function(){that.ngDialog.close()}, 2500);
@@ -100,7 +100,7 @@ export default class SheetDetailController {
   deleteQuestion(key) {
     var that = this;
     that.ngDialog.openConfirm({
-      template: 'app/modal/confirm-delete-question.html',
+      template: './app/modal/confirm-delete-question.html',
       className: 'ngdialog-theme-default'
     }).then(function (value) {
       that.sheet.questions.splice(key, 1);
