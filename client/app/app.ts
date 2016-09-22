@@ -17,12 +17,14 @@ import admin from './admin';
 import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
 import sheet from './sheet';
+import answer from './answer/answer.component';
 import main from './main/main.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import './app.scss';
 
-angular.module('App', [ngCookies, ngResource, ngSanitize, uiRouter, _Auth, _SheetManager, account, admin, sheet, navbar, footer, main, constants, util,angularMaterialize
+angular.module('App', [ngCookies, ngResource, ngSanitize, uiRouter,angularMaterialize,
+  _Auth, _SheetManager, account, admin, sheet, navbar, footer, main, constants, util, answer
 ]).config(routeConfig)
   .run(function($rootScope, $location, Auth) {
     'ngInject';
