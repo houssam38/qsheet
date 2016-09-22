@@ -141,7 +141,7 @@
   },
   "scripts": {
     "test": "gulp test",
-    "postinstall": "./node_modules/.bin/typings install",
+    "postinstall": "npm install -g typings",
     "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update",
     "start": "node server"
   },
