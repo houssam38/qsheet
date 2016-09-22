@@ -12,6 +12,6 @@ module.exports = {
   },
 
   // Seed database on startup
-  seedDB: true
+  seedDB: false
 
 };

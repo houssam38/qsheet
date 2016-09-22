@@ -16,15 +16,19 @@ export default class LoginController {
   submitted = false;
   Auth;
   $state;
+  $location;
 
   /*@ngInject*/
-  constructor(Auth, $state) {
+  constructor(Auth, $state, $location) {
     this.Auth = Auth;
     this.$state = $state;
+    this.$location = $location;
   }
 
   login(form) {
     this.submitted = true;
+
+
 
     if (form.$valid) {
       this.Auth.login({

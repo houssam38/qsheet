@@ -2,10 +2,12 @@
 
 export default class SheetListController {
   sheets: Object[];
+  private $state
 
     /*@ngInject*/
-  constructor(Sheet, Auth) {
+  constructor(Sheet, Auth, $state) {
     var that = this;
+    that.$state = $state
     Auth.getCurrentUser().then( function(res) {
         console.log(res._id);
         Sheet.getUserSheets().$promise.then( function (res) {
@@ -16,6 +18,9 @@ export default class SheetListController {
     });
   }
 
+  view(id) {
+    this.$state.go('answer', {idSheet : id})
+  }
   delete(sheet) {
       sheet.$remove();
       this.sheets.splice(this.sheets.indexOf(sheet), 1);

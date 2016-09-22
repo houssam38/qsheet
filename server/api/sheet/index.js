@@ -11,6 +11,8 @@ var router = express.Router();
 router.get('/admin', auth.hasRole('admin'), controller.adminGetSheets);
 router.get('/', auth.hasRole('user'), controller.userSheet);
 router.get('/:id', controller.show);
+router.get('/answer/:id', controller.showAnswer);
+router.get('/answerCheck/:id', controller.showAnswerCheck);
 router.post('/', controller.create);
 router.put('/:id', controller.upsert);
 router.patch('/:id', controller.patch);

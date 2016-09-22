@@ -11,6 +11,13 @@ export function SheetResource($resource) {
                 id: ':id'
             }
         },
+        getAnswer : {
+            method : 'GET',
+            params : {
+              id: 'answer/',
+              controller : ':id'
+            }
+        },
         getUserSheets: {
             method: 'GET',
             isArray: true,

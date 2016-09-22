@@ -1,1 +1,85 @@
-<div>This is the answer view.</div>
+<div class="container">
+
+  <div class="section" ng-if="answerCtrl.accessSheet == -1">
+    <h1>Error</h1>
+    <p>Sheet Not found</p>
+  </div>
+
+  <div class="section" ng-if="answerCtrl.accessSheet == 1">
+
+    <!--<div class="formWhoIs">-->
+
+      <!--<h1 class="center">Who are you ?</h1>-->
+      <!--<div class="row">-->
+        <!--<form class="col s12" ng-submit="answerCtrl.submitFormUser()">-->
+          <!--<div class="row">-->
+            <!--<div class="input-field col s6">-->
+              <!--<input  id="first_name" type="text" class="validate" ng-model="answerCtrl.user.firstName" required>-->
+              <!--<label for="first_name">First Name</label>-->
+            <!--</div>-->
+            <!--<div class="input-field col s6">-->
+              <!--<input id="last_name" type="text" class="validate"ng-model="answerCtrl.user.name" required>-->
+              <!--<label for="last_name">Last Name</label>-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--<div class="row">-->
+            <!--<div class="input-field col s12">-->
+              <!--<input id="email" type="email" class="validate" ng-model="answerCtrl.user.email" required>-->
+              <!--<label for="email">Email</label>-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--<div class="row center">-->
+            <!--<button class="btn waves-effect waves-light btn-large center" type="submit" name="action">send-->
+              <!--<i class="material-icons right">send</i>-->
+            <!--</button>-->
+          <!--</div>-->
+
+        <!--</form>-->
+      <!--</div>-->
+    <!--</div>-->
+
+
+    <div class="sheetForm">
+
+      <div class="section " ng-if="answerCtrl.sheet._id != null">
+        <h1 class="header orange-text center">{{answerCtrl.sheet.name}}</h1>
+        <p class="description">{{answerCtrl.sheet.description}}</p>
+        <ul class="question-container" ng-repeat="(idQuestion,question) in answerCtrl.sheet.questions ">
+          <li class="question">
+            <div class="input-field">
+              <h2 ng-value="question.name">
+                {{$index+1}}/{{answerCtrl.sheet.questions.length}}
+                <strong>{{ question.name }}</strong>
+              </h2>
+
+              <p class="answerInput" ng-repeat="answer in question.answers track by $index" >
+                <input type="checkbox" ng-model="answer.right" class="filled-in" id="filled-in-box-{{idQuestion}}-{{$index}}"  />
+                <label for="filled-in-box-{{idQuestion}}-{{$index}}">{{answer.value}}</label>
+              </p>
+
+
+            </div>
+          </li>
+          <div class="clear"></div>
+        </ul>
+
+
+        <button ng-click="answerCtrl.submitForm(answerCtrl.sheet)" class="btn waves-effect waves-light btn-large center" type="submit" name="action">Submit answers
+          <i class="material-icons right">send</i>
+        </button>
+
+      </div>
+
+      <div class="section" ng-if="answerCtrl.sheet._id == null">
+        <p>Une erreur est survenue, sheet  incorrect</p>
+      </div>
+
+    </div>
+
+</div>
+
+
+
+</div>

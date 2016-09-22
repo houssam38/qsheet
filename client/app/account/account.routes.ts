@@ -7,7 +7,8 @@ export default function routes($stateProvider) {
         url: '/login',
         template: require('./login/login.html'),
         controller: 'LoginController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+
       })
       .state('logout', {
         url: '/logout?referrer',

@@ -14,6 +14,7 @@ const ngDialog = require('ng-dialog');
 import {routeConfig} from './app.config';
 import _Auth from '../components/auth/auth.module';
 import _SheetManager from '../components/sheet-manager/sheet-manager.module';
+import answerService from './answer/answer.service';
 import account from './account';
 import admin from './admin';
 import navbar from '../components/navbar/navbar.component';
@@ -25,8 +26,8 @@ import constants from './app.constants';
 import util from '../components/util/util.module';
 import './app.scss';
 
-
-angular.module('App', [ngCookies, ngResource, ngSanitize, uiRouter, angularDragula(angular), ngDialog, angularMaterialize, _Auth, _SheetManager, account, admin, sheet, navbar, footer, main, constants,answer, util
+angular.module('App', [ngCookies, ngResource, ngSanitize, uiRouter,angularMaterialize,angularDragula(angular),ngDialog,
+  _Auth, _SheetManager, answerService, account, admin, sheet, navbar, footer, main, constants, util, answer
 ]).config(routeConfig)
   .run(function($rootScope, $location, Auth) {
     'ngInject';

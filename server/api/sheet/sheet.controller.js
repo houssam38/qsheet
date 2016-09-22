@@ -47,7 +47,9 @@ function removeEntity(res) {
 }
 
 function handleEntityNotFound(res) {
+
   return function(entity) {
+    console.log('Entity' , entity);
     if(!entity) {
       res.status(404).end();
       return null;
@@ -76,6 +78,25 @@ export function show(req, res) {
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
+}
+
+// Get on sheet for answer request
+export function showAnswer(req, res) {
+  return Sheet.findById(req.params.id, '-questions.answers.right').exec()
+    .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+// Get on sheet for answer request
+export function showAnswerCheck(req, res) {
+  return Sheet.findById(req.params.id).exec()
+    .then(handleEntityNotFound(res))
+    .then(sheet => {
+      res.status(200).json({
+        access : sheet.lock
+      });
+    })
+    .catch(handleError(res,404));
 }
 
 // Gets a single Sheet from the DB

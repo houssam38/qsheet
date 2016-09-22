@@ -32,7 +32,16 @@ export function SheetManagerService($location, $http, $cookies, $q, appConfig, U
             }, function(err) {
 
             }).$promise;
-        }
+        },
+
+        getSheet(sheet, callback?: Function) {
+            return Sheet.getAnswer( { id: sheet._id }, sheet, function(res) {
+
+            }, function(err) {
+              // TODO gestion des erreur
+            }).$promise;
+        },
+
     };
 
     return SheetManager;
