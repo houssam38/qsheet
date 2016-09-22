@@ -1,3 +1,6 @@
+@import '../../node_modules/ng-dialog/css/ngDialog.min';
+@import '../../node_modules/angular-dragula/dist/dragula';
+
 .addSheet {
 
 }
@@ -11,11 +14,12 @@ form {
     font-size: 30px;
     border-bottom: 0 none;
   }
-  .question-container {
+  .question {
     margin: 0 0 10px 0;
     padding: 10px 20px;
+    cursor: move;
   }
-  .question-container:nth-child(odd) {
+  .question:nth-child(odd) {
     background: #f3f3f3;
   }
 
@@ -24,12 +28,36 @@ form {
     float: left;
     margin-right: 20px;
   }
-
   .btn-add-question {
     margin-right: 10px;
   }
-
   .btn-add-answer  {
     margin-top: 15px;
+  }
+  .btn-delete-question  {
+    margin-top: 15px;
+    margin-left: 10px;
+  }
+}
+.ngdialog-content {
+  position: absolute;
+  left: 20%;
+  top: 30%;
+  width: 60%;
+  padding: 20px;
+
+  .ngdialog-close {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 20px;
+  }
+
+  .success {
+    color: forestgreen;
+  }
+  .success-text {
+    margin-top: 2px;
+    float: left;
   }
 }

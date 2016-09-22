@@ -16,10 +16,14 @@ export default class SheetDetailController {
   };
   SheetManager;
   $state;
+  ngDialog;
+  $timeout;
 
     /*@ngInject*/
-  constructor(Sheet, SheetManager, $state, $stateParams, Auth) {
+  constructor(Sheet, SheetManager, $state, $stateParams, Auth, dragulaService, ngDialog, $timeout) {
     var that = this;
+    this.ngDialog = ngDialog;
+    this.$timeout = $timeout;
     this.SheetManager = SheetManager;
     this.sheet = {
       _id : null,
@@ -53,11 +57,11 @@ export default class SheetDetailController {
   }
 
   save() {
-    console.log('save');
+    var that = this;
     if (this.sheet._id == null) {
       return this.SheetManager.createSheet(this.sheet)
           .then(() => {
-            //this.$state.go('sheet');
+            this.$state.go('sheet');
           })
           .catch(err => {
             err = err.data;
@@ -65,7 +69,13 @@ export default class SheetDetailController {
     } else {
       return this.SheetManager.updateSheet(this.sheet)
           .then(() => {
-            //this.$state.go('sheet');
+            that.ngDialog.open({
+              template: 'app/modal/notify-saved-sheet.html',
+              className: 'ngdialog-theme-default',
+              controller: function() {
+                that.$timeout(function(){that.ngDialog.close()}, 2500);
+              }
+            });
           })
           .catch(err => {
             err = err.data;
@@ -85,6 +95,18 @@ export default class SheetDetailController {
         right: false
       }]
     })
+  }
+
+  deleteQuestion(key) {
+    var that = this;
+    that.ngDialog.openConfirm({
+      template: 'app/modal/confirm-delete-question.html',
+      className: 'ngdialog-theme-default'
+    }).then(function (value) {
+      that.sheet.questions.splice(key, 1);
+    }, function (value) {
+      //Do something
+    });
   }
 
   addAnswer(answers) {
