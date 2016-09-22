@@ -1,34 +1,35 @@
 <div class="container">
-    <form novalidate ng-submit="sheetDetail.save()">
+    <form novalidate>
         <div class="form-group">
             <input type="text" class="sheet-name center" placeholder="Enter name" ng-model="sheetDetail.sheet.name">
-            <ul class="question-container" ng-repeat="question in sheetDetail.sheet.questions">
-                <li class="clear question">
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="description" class="materialize-textarea" ng-model="sheetDetail.sheet.description"></textarea>
+                    <label for="description">Description</label>
+                </div>
+            </div>
+            <div class="question-container" dragula="'bag-1'" dragula-model="sheetDetail.sheet.questions">
+                <div class="clear question" ng-repeat="(key, question) in sheetDetail.sheet.questions">
                     <div class="input-field">
                         <i class="material-icons prefix">question_answer</i>
                         <input type="text" ng-model="question.name">
-                        <div ng-repeat="answer in question.answers" dragula="'bag-{{question.id}}'" class="container ng-isolate-scope">
+                        <div ng-repeat="(akey, answer) in question.answers" class="ng-isolate-scope">
                             <div class="answer">
                                 <div class="input-field left">
-                                    <input type="checkbox" id="{{answer.value}}" ng-model="answer.right">
-                                    <label for="{{answer.value}}"></label>
+                                    <input type="checkbox" id="{{key}}-{{akey}}" ng-model="answer.right">
+                                    <label for="{{key}}-{{akey}}"></label>
                                 </div>
                                 <div class="input-field left">
                                     <input type="text" ng-model="answer.value">
                                 </div>
                             </div>
                         </div>
+                        <a class="btn-delete-question btn-floating waves-effect waves-light btn right red" ng-click="sheetDetail.deleteQuestion(key)"><i class="material-icons left">delete</i></a>
                         <a class="btn-add-answer btn-floating waves-effect waves-light btn right" ng-click="sheetDetail.addAnswer(question.answers)"><i class="material-icons left">add</i></a>
                     </div>
-                </li>
-                <div class="clear"></div>
-                <div class="container ng-isolate-scope hidden" dragula="'bag-{{question.id}}'">
-                    <!--<div>As soon as you start dragging an element, a <code>drag</code> event is fired</div>-->
-                    <!--<div>Whenever an element is cloned because <code>copy: true</code>, a <code>cloned</code> event fires</div>-->
-                    <!--<div>The <code>shadow</code> event fires whenever the placeholder showing where an element would be dropped is moved to a different container or position</div>-->
-                    <!--<div>A <code>drop</code> event is fired whenever an element is dropped anywhere other than its origin <em>(where it was initially dragged from)</em></div>-->
+                    <div class="clear"></div>
                 </div>
-            </ul>
+            </div>
         </div>
         <button class="waves-effect waves-light btn right" ng-click="sheetDetail.save()"><i class="material-icons left">done</i>Submit</button>
         <button class="btn-add-question waves-effect waves-light btn right" ng-click="sheetDetail.addQuestion()"><i class="material-icons left">add</i>Add Question</button>
