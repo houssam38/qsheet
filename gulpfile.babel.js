@@ -476,7 +476,6 @@ gulp.task('build', cb => {
         [
             'copy:extras',
             'copy:assets',
-            'copy:fonts:dist',
             'copy:server',
             'webpack:dist'
         ],
