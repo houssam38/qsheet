@@ -4,17 +4,22 @@ const angular = require('angular');
 const uiRouter = require('angular-ui-router');
 
 import routes from './answer.routes';
+import {answerService} from "./answer.service";
 
 export class AnswerComponent {
   /*@ngInject*/
   private sheet
   public user
   private accessSheet
+  private answerService
+
+  private completedSheet = false
 
   constructor(SheetManager,$stateParams, $state, answerService, Auth) {
 
     this.accessSheet = false
     var that = this;
+    that.answerService = answerService
 
 
     that.user =  {
@@ -31,8 +36,11 @@ export class AnswerComponent {
         $state.go('login', {'referrer' : 'answer', 'idSheet' : id});
       } else {
         that.accessSheet = true
+        Auth.getCurrentUser(function(response) {
+          that.user  = response
+        })
       }
-    });
+    })
 
 
     // answerService.checkAuthorizationDisplay(id)
@@ -53,7 +61,6 @@ export class AnswerComponent {
 
     getSheet
       .then(function(sheet) {
-      console.log('ok', sheet)
       that.sheet = sheet
       // console.log(sheet)
       }, function(error) {
@@ -67,11 +74,9 @@ export class AnswerComponent {
     promise.then(function(sheet) {
       that.sheet = sheet
 
-
-      console.log(sheet)
     }, function(reason) {
       console.error('Failed: ' + reason);
-      $state.go('404')
+      //$state.go('404')
     });
 
   }
@@ -81,8 +86,40 @@ export class AnswerComponent {
     console.log('test', this.user)
   }
   submitForm(sheet) {
-    console.log('Submit form')
-    console.log(sheet)
+    var that = this
+
+    var answsers = [];
+    angular.forEach(sheet.questions, function(value, key) {
+      var userAnswers = {
+        idQuestion : value._id,
+        response : [],
+      }
+
+      angular.forEach(value.answers, function(value2, key2) {
+        if(value2.right)
+          this.push(value2._id)
+      }, userAnswers.response)
+
+      this.push(userAnswers)
+    }, answsers);
+
+    var answerSheet = {
+      idSheet: sheet._id,
+      name : this.user.name,
+      //firstName : this.user.firstName,
+      email : this.user.email,
+      answers : answsers,
+    };
+
+    console.log('Display validate form ',  answerSheet)
+
+    this.answerService.createAnswer(answerSheet)
+      .then(function(response) {
+        if(response.status == 201) {
+          that.completedSheet = true
+        }
+      });
+
   }
 }
 

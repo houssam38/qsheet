@@ -16,9 +16,9 @@ var AnswerSheetSchema = new mongoose.Schema({
         type : Date,
         default : Date.now
       },
-      response : [
-        {vale:objectId}
-      ]
+      response : [ {
+        type : objectId
+      }]
   }],
   score :  {
     type : Number,

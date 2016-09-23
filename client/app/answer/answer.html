@@ -41,7 +41,7 @@
     <!--</div>-->
 
 
-    <div class="sheetForm">
+    <div class="sheetForm" ng-if="!answerCtrl.completedSheet">
 
       <div class="section " ng-if="answerCtrl.sheet._id != null">
         <h1 class="header orange-text center">{{answerCtrl.sheet.name}}</h1>
@@ -78,6 +78,10 @@
 
     </div>
 
+    <div class="sheetResponse" ng-if="answerCtrl.completedSheet">
+      <h1>Sheet completed !</h1>
+      <p>Thinks for yours answers !</p>
+    </div>
 </div>
 
 

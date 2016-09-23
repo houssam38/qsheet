@@ -2,12 +2,13 @@
 const angular = require('angular');
 
 /*@ngInject*/
-export  function answerService($location, $http, $cookies, $q, appConfig, Util, User) {
+export  function answerService($location, $http,SheetManager, $cookies, $q, appConfig, Util, User) {
   'ngInject';
 
   const URL = {
     'check' : '/api/sheets/answerCheck/',
-    'post'  : '/api/sheets/answerAuthorization/'
+    'post'  : '/api/sheets/answerAuthorization/',
+    'answer': '/api/answerSheet/'
   };
 
   var Answer = {
@@ -33,10 +34,8 @@ export  function answerService($location, $http, $cookies, $q, appConfig, Util, 
           var sheet = res.data
 
           angular.forEach(sheet.questions, function(value, key) {
-            console.log(key, value);
             angular.forEach(value.answers, function(value2, key2) {
               value2.right = false;
-              console.log(value2)
             });
           });
 
@@ -46,6 +45,16 @@ export  function answerService($location, $http, $cookies, $q, appConfig, Util, 
           return err;
         });
     },
+
+    createAnswer(userAnswer, callback?: Function) {
+      return $http.post(URL.answer, userAnswer)
+        .then(res => {
+          return res
+        })
+        .catch(err => {
+          return err
+        });
+    }
   };
 
   return Answer;
